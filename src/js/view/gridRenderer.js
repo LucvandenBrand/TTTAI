@@ -1,4 +1,4 @@
-import Observer from "../Observer/observer";
+import Observer from "../observer/observer";
 
 export default class GridRenderer extends Observer {
     constructor(grid, gridElement) {
@@ -9,6 +9,10 @@ export default class GridRenderer extends Observer {
         this._buildView();
         this._renderGrid();
         grid.subscribe(this);
+    }
+
+    get cellElements() {
+        return this._cellElements;
     }
 
     _buildView() {

@@ -1,4 +1,4 @@
-import Observable from '../Observer/observable'
+import Observable from '../observer/observable'
 
 export default class Grid extends Observable {
     constructor(rows, cols) {
@@ -56,5 +56,9 @@ export default class Grid extends Observable {
     getCellMark(row, col) {
         this._checkRange();
         return this._grid_data[row][col];
+    }
+
+    isMarked(row, col) {
+        return this.getCellMark(row, col) !== this.MARK_EMPTY;
     }
 }
