@@ -14,21 +14,21 @@ export default class Grid extends Observable {
         for (let row = 0; row < this._rows; row++) {
             let colValues = [];
             for (let col = 0; col < this._cols; col++) {
-                colValues.push(this.MARK_EMPTY);
+                colValues.push(Grid.MARK_EMPTY);
             }
             this._grid_data.push(colValues);
         }
     }
 
-    get MARK_EMPTY() {
+    static get MARK_EMPTY() {
         return -1;
     }
 
-    get MARK_HUMAN() {
+    static get MARK_HUMAN() {
         return 0;
     }
 
-    get MARK_AI() {
+    static get MARK_AI() {
         return 1;
     }
 
@@ -59,6 +59,6 @@ export default class Grid extends Observable {
     }
 
     isMarked(row, col) {
-        return this.getCellMark(row, col) !== this.MARK_EMPTY;
+        return this.getCellMark(row, col) !== Grid.MARK_EMPTY;
     }
 }
