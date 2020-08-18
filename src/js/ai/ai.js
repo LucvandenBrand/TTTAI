@@ -12,7 +12,9 @@ export default class AI extends Observer{
     update() {
         if (!this._game.isMyTurn(Grid.MARK_AI))
             return;
-        this._makeMove().then(result => this._game.nextTurn());
+        setTimeout(() => {
+            this._makeMove().then(result => this._game.nextTurn());
+        }, 10);
     }
 
     async _makeMove() {
@@ -24,13 +26,12 @@ export default class AI extends Observer{
     }
 
     _findBestOption(mark, options) {
+        const minScore = mark === Grid.MARK_HUMAN ? -1 : 1;
         const score = this._game.evaluate();
-        if (options.length === 0 || score !== 0)
+        if (options.length === 0 || score === minScore)
             return new Result(new Point(-1, -1), score);
 
-        const minScore = mark === Grid.MARK_HUMAN ? -1 : 1;
         let bestResult = new Result(new Point(-1, -1), minScore);
-
         for (let option of options) {
             this._game.grid.markCell(option.row, option.col, mark);
             const result = this._findBestOption(mark ^ 1, this._removeOption(options, option));
