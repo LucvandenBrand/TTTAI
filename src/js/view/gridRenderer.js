@@ -1,6 +1,14 @@
 import Observer from "../observer/observer";
 
+/**
+ * Renders the given grid in the DOM. Relies on appropriate CSS to render correctly.
+ */
 export default class GridRenderer extends Observer {
+    /**
+     * Construct the renderer, which will subscribe to the grid and will build the DOM elements.
+     * @param {Grid} grid The grid to render.
+     * @param {HTMLElement} gridElement The element to add child elements to.
+     */
     constructor(grid, gridElement) {
         super();
         this._grid = grid;
@@ -11,6 +19,10 @@ export default class GridRenderer extends Observer {
         grid.subscribe(this);
     }
 
+    /**
+     * Returns the cell elements of the rendered grid.
+     * @returns {HTMLElement[]} The cell elements of the rendered grid.
+     */
     get cellElements() {
         return this._cellElements;
     }
@@ -40,6 +52,9 @@ export default class GridRenderer extends Observer {
         }
     }
 
+    /**
+     * When the grid changes, we update our DOM render.
+     */
     update() {
         this._renderGrid();
     }

@@ -2,13 +2,23 @@ import Observer from "../observer/observer";
 import Grid from "../model/grid";
 import Point from "../model/point";
 
-export default class AI extends Observer{
+/**
+ * Logic that allows the computer to win at TTT, based on Depth-first search.
+ */
+export default class AI extends Observer {
+    /**
+     * Construct the AI with the game to play with.
+     * @param {Game} game The game to play with.
+     */
     constructor(game) {
         super();
         this._game = game;
         this._game.subscribe(this);
     }
 
+    /**
+     * If it is the AI's turn, make a move.
+     */
     update() {
         if (!this._game.isMyTurn(Grid.MARK_AI))
             return;

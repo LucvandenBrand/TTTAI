@@ -1,21 +1,40 @@
 import Grid from "./grid";
 import Observable from "../observer/observable";
 
-export default class Game extends Observable{
+/**
+ * Top-level class containing the grid and managing basic game logic.
+ */
+export default class Game extends Observable {
+    /**
+     * Construct the game with a grid.
+     * @param {Grid} grid The grid on which the game is played.
+     */
     constructor(grid) {
         super();
         this._turn = Grid.MARK_HUMAN;
         this._grid = grid;
     }
 
+    /**
+     * Return the grid used by the game
+     * @returns {Grid}
+     */
     get grid() {
         return this._grid;
     }
 
+    /**
+     * Return true if it is the turn of the given mark.
+     * @param {Number} mark The mark to query.
+     * @returns {boolean}
+     */
     isMyTurn(mark) {
         return this._turn === mark;
     }
 
+    /**
+     * Switch to the other player's turn.
+     */
     nextTurn() {
         if (this._turn === Grid.MARK_HUMAN)
             this._turn = Grid.MARK_AI;
@@ -24,6 +43,10 @@ export default class Game extends Observable{
         this._notifyObservers();
     }
 
+    /**
+     * Return a score evaluating the winning-state of the game.
+     * @returns {Number}
+     */
     evaluate() {
         let score = this._evaluateRows();
         if (score !== 0)

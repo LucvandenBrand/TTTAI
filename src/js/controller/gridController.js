@@ -1,6 +1,15 @@
 import Grid from "../model/grid";
 
+/**
+ * Allows the user to make moves in the game.
+ */
 export default class GridController {
+    /**
+     * Construct the controller, with the game to control
+     * and the renderer to bind events to.
+     * @param {Game} game The game to control.
+     * @param {GridRenderer} gridRenderer The renderer to bind events to.
+     */
     constructor(game, gridRenderer) {
         this._game = game;
         this._buildClickListeners(gridRenderer.cellElements);

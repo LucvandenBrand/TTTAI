@@ -5,6 +5,9 @@ import Game from "./model/game";
 import AI from "./ai/ai";
 import TurnRenderer from "./view/turnRenderer";
 
+/**
+ * Main entrypoint, load all top-level classes and link them together.
+ */
 window.onload = () => {
 
   const grid = new Grid(3, 3);
