@@ -1,4 +1,5 @@
 import Observable from '../observer/observable'
+import Point from "./point";
 
 export default class Grid extends Observable {
     constructor(rows, cols) {
@@ -60,5 +61,16 @@ export default class Grid extends Observable {
 
     isMarked(row, col) {
         return this.getCellMark(row, col) !== Grid.MARK_EMPTY;
+    }
+
+    get unmarked() {
+        let points = [];
+        for (let row = 0; row < this._rows; row++) {
+            for (let col = 0; col < this._cols; col++) {
+                if (!this.isMarked(row, col))
+                    points.push(new Point(row, col));
+            }
+        }
+        return points;
     }
 }
