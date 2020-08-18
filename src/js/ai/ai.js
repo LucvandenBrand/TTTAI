@@ -14,7 +14,7 @@ export default class AI extends Observer{
             return;
         setTimeout(() => {
             this._makeMove().then(result => this._game.nextTurn());
-        }, 10);
+        }, 50);
     }
 
     async _makeMove() {

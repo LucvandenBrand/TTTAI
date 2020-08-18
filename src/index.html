@@ -38,9 +38,27 @@
         content: "Click me, I'm interactive!";
         padding:1em;
     }
+
+    #robot-thinking {
+        display: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,255,0.5);
+        color: white;
+    }
+
+    #robot-thinking:after {
+        position:absolute;
+        content: "🤖 Thinking...";
+        padding:1em;
+        font-size: 2em;
+    }
 </style>
 
 <div id ="game">
+    <div id="robot-thinking">
+    </div>
     <div id="interaction" onclick="this.style.display='none'">
     </div>
     <div id="playing-field">
